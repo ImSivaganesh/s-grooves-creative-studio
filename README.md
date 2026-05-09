@@ -1,11 +1,13 @@
-
 # S-Grooves Creative Studio
 
 Premium responsive landing page for **S-Grooves Creative Studio**, a modern creative and dance training brand focused on personalized online coaching, choreography, movement culture, and performance artistry.
 
+---
+
 ## Overview
 
 This project was designed and developed as a modern portfolio-ready landing page experience with a strong focus on:
+
 - clean UI/UX
 - responsive design
 - premium visual branding
@@ -15,7 +17,6 @@ This project was designed and developed as a modern portfolio-ready landing page
 The website showcases S-Grooves' online dance training services, pricing structure, personal coaching model, and registration workflow in a visually engaging format.
 
 ---
-
 
 ## Live Demo
 
@@ -74,10 +75,14 @@ s-grooves-creative-studio/
 └── assets/
     ├── coach.jpg
     ├── preview1.png
+    ├── preview2.png
+    ├── preview3.png
+    ├── preview4.png
     └── other-assets
 ```
 
 ---
+
 ## Installation & Setup
 
 ### Clone the Repository
@@ -96,10 +101,10 @@ cd s-grooves-creative-studio
 
 Open `index.html` directly in your browser
 
-OR use VS Code Live Server extension.
+OR use the VS Code Live Server extension.
 
 ---
-```
+
 ## Deployment
 
 This project can be deployed using:
@@ -112,7 +117,7 @@ This project can be deployed using:
 
 1. Push code to GitHub
 2. Go to Repository Settings
-3. Open Pages section
+3. Open the Pages section
 4. Select:
    - Branch: `main`
    - Folder: `/root`
@@ -120,11 +125,12 @@ This project can be deployed using:
 
 Your website will go live automatically.
 
-```
+---
 
 ## Design Goals
 
 The main objective of this project was to create a landing page that feels:
+
 - premium
 - emotionally engaging
 - youth-focused
@@ -132,6 +138,7 @@ The main objective of this project was to create a landing page that feels:
 - conversion-oriented
 
 Special attention was given to:
+
 - spacing
 - readability
 - motion flow
@@ -157,6 +164,7 @@ Special attention was given to:
 ## Responsive Design
 
 The website is optimized for:
+
 - Mobile Devices
 - Tablets
 - Laptops
@@ -167,6 +175,7 @@ The website is optimized for:
 ## Performance Focus
 
 Optimization considerations:
+
 - lightweight structure
 - organized assets
 - scalable folder architecture
@@ -178,6 +187,7 @@ Optimization considerations:
 ## Future Improvements
 
 Planned future upgrades:
+
 - backend API integration
 - admin dashboard
 - booking automation
@@ -192,6 +202,7 @@ Planned future upgrades:
 ## Learning Outcomes
 
 This project helped strengthen practical skills in:
+
 - responsive web design
 - frontend architecture
 - Git & GitHub workflow
@@ -202,13 +213,12 @@ This project helped strengthen practical skills in:
 
 ---
 
-## Deployment
+## Deployment Status
 
-The project is deployed using:
-
+### Currently Deployed On
 - GitHub Pages
 
-Future deployment targets:
+### Future Deployment Targets
 - Vercel
 - Netlify
 - Cloudflare
@@ -225,6 +235,7 @@ Future deployment targets:
 💡 UI/UX & Brand-Focused Builder  
 
 🚀 Founder of **S-Grooves Creative Studio**
+
 ---
 
 ## 🚀 Brand Identity
@@ -232,7 +243,10 @@ Future deployment targets:
 # S-Grooves Creative Studio
 
 ### *Move • Feel • Create*
+
 ### Modern Dance • Creative Direction • Performance Culture
+
+---
 
 ## License
 
@@ -260,13 +274,12 @@ This project is licensed under the MIT License.
 ### Final CTA Section
 ![CTA Section](assets/preview4.png)
 
-
-
-
 ---
+
 ## Acknowledgements
 
 Special thanks to:
+
 - Open-source web community
 - Modern UI/UX inspiration sources
 - Creative design systems
@@ -277,6 +290,8 @@ Special thanks to:
 ## Project Status
 
 Active and continuously evolving.
+
+---
 
 ## Connect With Me
 
