@@ -222,9 +222,9 @@ Future deployment targets:
 🎨 Creative Developer  
 📹 Content Creator  
 🕺 Dance Choreographer  
-💡 UI/UX & Brand-Focused Builder
-🚀 Building S-Grooves Creative Studio
+💡 UI/UX & Brand-Focused Builder  
 
+🚀 Founder of **S-Grooves Creative Studio**
 ---
 
 ## 🚀 Brand Identity
