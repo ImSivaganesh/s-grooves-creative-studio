@@ -99,7 +99,7 @@ Open `index.html` directly in your browser
 OR use VS Code Live Server extension.
 
 ---
-
+```
 ## Deployment
 
 This project can be deployed using:
@@ -119,6 +119,8 @@ This project can be deployed using:
 5. Save changes
 
 Your website will go live automatically.
+
+```
 
 ## Design Goals
 
