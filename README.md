@@ -220,7 +220,6 @@ This project is licensed under the MIT License.
 
 
 
-```
 
 ---
 
@@ -237,7 +236,7 @@ Special thanks to:
 Active and continuously evolving.
 
 ## Connect With Me
-```
+
 [![Instagram](https://img.shields.io/badge/Instagram-@thesivashades-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/thesivashades)
 
 [![YouTube](https://img.shields.io/badge/YouTube-@thesivashades-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@thesivashades)
