@@ -78,6 +78,47 @@ s-grooves-creative-studio/
 ```
 
 ---
+## Installation & Setup
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/ImSivaganesh/s-grooves-creative-studio.git
+```
+
+### Navigate into the Project Folder
+
+```bash
+cd s-grooves-creative-studio
+```
+
+### Run the Project
+
+Open `index.html` directly in your browser
+
+OR use VS Code Live Server extension.
+
+---
+
+## Deployment
+
+This project can be deployed using:
+
+- GitHub Pages
+- Vercel
+- Netlify
+
+### GitHub Pages Deployment
+
+1. Push code to GitHub
+2. Go to Repository Settings
+3. Open Pages section
+4. Select:
+   - Branch: `main`
+   - Folder: `/root`
+5. Save changes
+
+Your website will go live automatically.
 
 ## Design Goals
 
@@ -180,17 +221,6 @@ Creative Developer | Content Creator | Dance Choreographer
 #### Brand
 S-Grooves Creative Studio
 
----
-
-## Connect
-
-### Instagram
-@thesivashades
-
-### YouTube
-@thesivashades
-
----
 
 ## License
 
