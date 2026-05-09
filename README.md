@@ -206,7 +206,13 @@ This project is licensed under the MIT License.
 Add project screenshots here for portfolio presentation.
 
 ```txt
-assets/preview.png
+assets/preview1.png
+assets/preview2.png
+assets/preview3.png
+assets/preview4.png
+
+
+
 ```
 
 ---
