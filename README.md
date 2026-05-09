@@ -201,15 +201,25 @@ This project is licensed under the MIT License.
 
 ---
 
-## Preview
+## Website Preview
 
-Add project screenshots here for portfolio presentation.
+### Hero Section
+![Hero Section](assets/preview1.png)
 
-```txt
-assets/preview1.png
-assets/preview2.png
-assets/preview3.png
-assets/preview4.png
+---
+
+### Pricing Section
+![Pricing Section](assets/preview2.png)
+
+---
+
+### Registration Section
+![Registration Section](assets/preview3.png)
+
+---
+
+### Final CTA Section
+![CTA Section](assets/preview4.png)
 
 
 
