@@ -56,8 +56,9 @@ https://imsivaganesh.github.io/s-grooves-creative-studio/
 - GitHub Pages
 
 ### Integrations
-- WhatsApp API
+- WhatsApp Integration
 - Google Fonts
+- Google Sheets Registration Workflow
 
 ---
 
