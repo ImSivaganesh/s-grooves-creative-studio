@@ -21,7 +21,7 @@ The website showcases S-Grooves' online dance training services, pricing structu
 Add your GitHub Pages link here:
 
 ```txt
-https://yourusername.github.io/s-grooves-creative-studio/
+https://imsivaganesh.github.io/s-grooves-creative-studio/
 ```
 
 ---
