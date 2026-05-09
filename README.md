@@ -16,9 +16,6 @@ The website showcases S-Grooves' online dance training services, pricing structu
 
 ---
 
-## Live Demo
-
-Add your GitHub Pages link here:
 
 ## Live Demo
 
@@ -226,8 +223,6 @@ This project is licensed under the MIT License.
 ```
 
 ---
-
-## Acknowledgements
 
 Special thanks to:
 - Open-source web community
