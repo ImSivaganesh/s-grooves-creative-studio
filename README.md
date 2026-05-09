@@ -73,7 +73,7 @@ s-grooves-creative-studio/
 │
 └── assets/
     ├── coach.jpg
-    ├── favicon.ico
+    ├── preview1.png
     └── other-assets
 ```
 
@@ -222,6 +222,7 @@ This project is licensed under the MIT License.
 
 
 ---
+## Acknowledgements
 
 Special thanks to:
 - Open-source web community
@@ -242,4 +243,3 @@ Active and continuously evolving.
 [![YouTube](https://img.shields.io/badge/YouTube-@thesivashades-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@thesivashades)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ImSivaganesh)
-```
