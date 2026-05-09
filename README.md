@@ -215,14 +215,23 @@ Future deployment targets:
 
 ---
 
-## Author
+## 🌟 About the Creator
 
-### Sivaganesh
-Creative Developer | Content Creator | Dance Choreographer
+# Sivaganesh
 
-#### Brand
-S-Grooves Creative Studio
+🎨 Creative Developer  
+📹 Content Creator  
+🕺 Dance Choreographer  
+💡 UI/UX & Brand-Focused Builder
 
+---
+
+## 🚀 Brand Identity
+
+# S-Grooves Creative Studio
+
+### *Move • Feel • Create*
+### Modern Dance • Creative Direction • Performance Culture
 
 ## License
 
