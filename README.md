@@ -20,9 +20,9 @@ The website showcases S-Grooves' online dance training services, pricing structu
 
 Add your GitHub Pages link here:
 
-```txt
-https://imsivaganesh.github.io/s-grooves-creative-studio/
-```
+## Live Demo
+
+[Visit S-Grooves Creative Studio](https://imsivaganesh.github.io/s-grooves-creative-studio/)
 
 ---
 
@@ -242,9 +242,10 @@ Special thanks to:
 Active and continuously evolving.
 
 ## Connect With Me
-
+```
 [![Instagram](https://img.shields.io/badge/Instagram-@thesivashades-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/thesivashades)
 
 [![YouTube](https://img.shields.io/badge/YouTube-@thesivashades-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@thesivashades)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ImSivaganesh)
+```
