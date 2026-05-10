@@ -277,6 +277,10 @@
             </div>
           </div>
           <form class="sg-form" id="quickForm">
+            <!-- Security Honeypot to block spam bots -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="website_url" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="quick-form-grid">
               <div class="field-group">
                 <label class="field-label" for="quickName">Full Name *</label>
@@ -388,6 +392,10 @@
               </div>
             </div>
             <form id="enquiryForm" class="sg-form">
+              <!-- Security Honeypot to block spam bots -->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="website_url" tabindex="-1" autocomplete="off" />
+              </div>
               <div class="field-group">
                 <label class="field-label" for="fullName">Full Name *</label>
                 <input class="field-input" type="text" id="fullName" name="fullName" placeholder="Your name" required />
