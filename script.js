@@ -1,11 +1,9 @@
 const GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec";
 
-const form = document.querySelector("#enquiryForm");
-const statusEl = document.querySelector("#formStatus");
-const submitButton = document.querySelector("#submitBtn");
-const buttonText = document.querySelector("#btnText");
+const forms = document.querySelectorAll(".sg-form");
 
 function escapeHTML(value) {
+  if (!value) return "";
   return String(value).replace(/[&<>"']/g, (character) => {
     const entities = {
       "&": "&amp;",
@@ -18,9 +16,12 @@ function escapeHTML(value) {
   });
 }
 
-function setStatus(message, type = "") {
-  statusEl.innerHTML = message;
-  statusEl.className = `form-success show ${type}`.trim();
+function setStatus(formElement, message, type = "") {
+  const statusEl = formElement.querySelector(".formStatus");
+  if (statusEl) {
+    statusEl.innerHTML = message;
+    statusEl.className = `formStatus form-success show ${type}`.trim();
+  }
 }
 
 function getPayload(formElement) {
@@ -35,7 +36,7 @@ function getPayload(formElement) {
     plan: payload.plan || "",
     experience: payload.experience || "",
     message: payload.message || "",
-    source: "S-Grooves landing page",
+    source: payload.source || "S-Grooves landing page main form",
   };
 }
 
@@ -57,47 +58,54 @@ async function submitToGoogleSheet(payload) {
   });
 }
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
+forms.forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-
-  const payload = getPayload(form);
-
-  submitButton.disabled = true;
-  buttonText.textContent = "Sending...";
-  setStatus("Submitting your registration...");
-
-  try {
-    saveLocalBackup(payload);
-
-    if (GOOGLE_SHEET_WEB_APP_URL) {
-      await submitToGoogleSheet(payload);
-      setStatus(
-        `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the groove, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
-        "success",
-      );
-    } else {
-      setStatus(
-        `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Nice, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Saved in this browser. Add your Google Apps Script URL in script.js to record it in Google Sheets.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
-        "success",
-      );
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
     }
 
-    form.reset();
-    buttonText.textContent = "Submitted";
-  } catch (error) {
-    setStatus("Submission failed. Please try again or message on WhatsApp.", "error");
-    buttonText.textContent = "Submit Registration";
-  } finally {
-    setTimeout(() => {
-      submitButton.disabled = false;
-      buttonText.textContent = "Submit Registration";
-    }, 2000);
-  }
+    const payload = getPayload(form);
+    const submitButton = form.querySelector("button[type='submit']");
+    const buttonText = form.querySelector(".btnText");
+    const originalText = buttonText ? buttonText.textContent : "Submit";
+
+    if (submitButton) submitButton.disabled = true;
+    if (buttonText) buttonText.textContent = "Sending...";
+    setStatus(form, "Submitting your registration...");
+
+    try {
+      saveLocalBackup(payload);
+
+      if (GOOGLE_SHEET_WEB_APP_URL) {
+        await submitToGoogleSheet(payload);
+        setStatus(
+          form,
+          `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the groove, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
+          "success",
+        );
+      } else {
+        setStatus(
+          form,
+          `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Nice, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Saved in this browser. Add your Google Apps Script URL in script.js to record it in Google Sheets.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
+          "success",
+        );
+      }
+
+      form.reset();
+      if (buttonText) buttonText.textContent = "Submitted";
+    } catch (error) {
+      setStatus(form, "Submission failed. Please try again or message on WhatsApp.", "error");
+      if (buttonText) buttonText.textContent = originalText;
+    } finally {
+      setTimeout(() => {
+        if (submitButton) submitButton.disabled = false;
+        if (buttonText) buttonText.textContent = originalText;
+      }, 2000);
+    }
+  });
 });
 
 const observer = new IntersectionObserver(
