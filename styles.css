@@ -1842,6 +1842,12 @@ footer {
   }
 }
 
+.quick-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
@@ -1887,7 +1893,8 @@ footer {
   .curr-grid,
   .sched-grid,
   .fee-grid,
-  .support-grid {
+  .support-grid,
+  .quick-form-grid {
     grid-template-columns: 1fr;
   }
 
