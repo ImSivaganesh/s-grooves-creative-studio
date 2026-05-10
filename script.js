@@ -1,4 +1,4 @@
-const GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec";
+
 
 const forms = document.querySelectorAll(".sg-form");
 
@@ -36,6 +36,7 @@ function getPayload(formElement) {
     plan: payload.plan || "",
     experience: payload.experience || "",
     message: payload.message || "",
+    website_url: payload.website_url || "",
     source: payload.source || "S-Grooves landing page main form",
   };
 }
@@ -48,14 +49,17 @@ function saveLocalBackup(payload) {
 }
 
 async function submitToGoogleSheet(payload) {
-  await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+  const response = await fetch("/api/submit", {
     method: "POST",
-    mode: "no-cors",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
   });
+
+  if (!response.ok) {
+    throw new Error("Server submission failed");
+  }
 }
 
 forms.forEach((form) => {
@@ -79,20 +83,12 @@ forms.forEach((form) => {
     try {
       saveLocalBackup(payload);
 
-      if (GOOGLE_SHEET_WEB_APP_URL) {
-        await submitToGoogleSheet(payload);
-        setStatus(
-          form,
-          `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the groove, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
-          "success",
-        );
-      } else {
-        setStatus(
-          form,
-          `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Nice, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Saved in this browser. Add your Google Apps Script URL in script.js to record it in Google Sheets.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
-          "success",
-        );
-      }
+      await submitToGoogleSheet(payload);
+      setStatus(
+        form,
+        `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the groove, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
+        "success",
+      );
 
       form.reset();
       if (buttonText) buttonText.textContent = "Submitted";
