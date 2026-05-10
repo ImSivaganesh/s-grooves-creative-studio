@@ -5,5 +5,17 @@
       "destination": "https://wa.me/919578431949?text=Hi%20Siva!%20I%27m%20interested%20in%20claiming%20a%20slot%20for%20the%20S-Grooves%20personal%20dance%20training...",
       "permanent": false
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    }
   ]
 }
