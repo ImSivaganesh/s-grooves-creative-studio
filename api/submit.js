@@ -9,25 +9,28 @@ export default async function handler(req, res) {
 
   // --- 1. ORIGIN CHECKING (Anti-Postman / Direct Attack) ---
   const origin = req.headers.origin || req.headers.referer || "";
-  // Check if the request is coming from your Vercel site or a local testing server
-  if (origin && !origin.includes("s-grooves") && !origin.includes("localhost") && !origin.includes("127.0.0.1")) {
+  // More lenient check for testing
+  const isAllowed = !origin || 
+                    origin.includes("s-grooves") || 
+                    origin.includes("vercel.app") || 
+                    origin.includes("localhost") || 
+                    origin.includes("127.0.0.1");
+
+  if (!isAllowed) {
     console.error("Blocked unauthorized origin:", origin);
-    return res.status(403).json({ error: "Forbidden: Invalid Origin" });
+    return res.status(403).json({ success: false, error: "Forbidden: Invalid Origin" });
   }
 
-  // --- 2. RATE LIMITING (Anti-Spam Loop) ---
-  // Allow max 3 submissions per minute per IP address
+  // --- 2. RATE LIMITING ---
   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
   const now = Date.now();
   
   if (ip !== 'unknown') {
     const userRequests = ipCache.get(ip) || [];
-    // Keep only requests from the last 60 seconds
     const recentRequests = userRequests.filter(timestamp => now - timestamp < 60000);
     
-    if (recentRequests.length >= 3) {
-      console.warn(`Rate limit exceeded for IP: ${ip}`);
-      return res.status(429).json({ error: "Too many requests. Please wait a minute before trying again." });
+    if (recentRequests.length >= 5) { // Increased to 5 for easier testing
+      return res.status(429).json({ success: false, error: "Too many requests. Please wait a minute." });
     }
     
     recentRequests.push(now);
@@ -36,41 +39,43 @@ export default async function handler(req, res) {
 
   const payload = req.body;
 
-  // --- EXISTING HONEYPOT CHECK ---
+  // --- HONEYPOT CHECK ---
   if (payload.website_url && payload.website_url.trim() !== "") {
-    console.log("Bot detected via honeypot.");
-    return res.status(200).json({ success: true, message: "Registration received." });
+    return res.status(200).json({ success: true, message: "Spam filtered." });
   }
   delete payload.website_url;
 
-  // --- 3. FORMULA SANITIZATION (Anti-Spreadsheet Injection) ---
-  // Prevents hackers from typing '=IMPORTXML()' to run malicious code in your Google Sheet
+  // --- 3. FORMULA SANITIZATION ---
   for (const key in payload) {
     if (typeof payload[key] === "string") {
       payload[key] = payload[key].trim();
-      // If the text starts with =, +, -, or @, prepend a single quote to force it as plain text
       if (/^[=+\-@]/.test(payload[key])) {
         payload[key] = "'" + payload[key];
       }
     }
   }
 
-  // Secure backend execution
   const GOOGLE_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec";
 
   try {
     const response = await fetch(GOOGLE_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
+      redirect: "follow", // Explicitly follow Google's redirects
     });
 
-    const data = await response.text();
-    return res.status(200).json({ success: true, data });
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Google Script Error:", errorText);
+      return res.status(502).json({ success: false, error: "Google Sheets rejected the request." });
+    }
+
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Submission error:", error);
-    return res.status(500).json({ success: false, error: "Internal Server Error" });
+    console.error("Backend error:", error);
+    return res.status(500).json({ success: false, error: error.message });
   }
 }
