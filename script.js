@@ -57,9 +57,10 @@ async function submitToGoogleSheet(payload) {
     body: JSON.stringify(payload),
   });
 
-  if (!response.ok) {
-    throw new Error("Server submission failed");
-  }
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || "Server submission failed");
+    }
 }
 
 forms.forEach((form) => {
@@ -84,16 +85,17 @@ forms.forEach((form) => {
       saveLocalBackup(payload);
 
       await submitToGoogleSheet(payload);
+      
       setStatus(
         form,
         `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the groove, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
         "success",
       );
-
       form.reset();
       if (buttonText) buttonText.textContent = "Submitted";
     } catch (error) {
-      setStatus(form, "Submission failed. Please try again or message on WhatsApp.", "error");
+      console.error("Submission error details:", error);
+      setStatus(form, `Error: ${error.message}. Please try again or WhatsApp me.`, "error");
       if (buttonText) buttonText.textContent = originalText;
     } finally {
       setTimeout(() => {
