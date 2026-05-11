@@ -47,16 +47,28 @@ function saveLocalBackup(payload) {
 }
 
 async function submitToGoogleSheet(payload) {
-  // --- SECURE ROUTE ---
-  // We NEVER expose the Google Script URL in the browser. 
-  // All traffic goes through our Vercel API "Bouncer".
-  const endpoint = "/api/submit";
+  // --- SMART SWITCH ---
+  // If local, use the Google URL directly for testing.
+  // If live, use the secure /api/submit route to hide your keys.
+  const isLocal = window.location.hostname === "localhost" || 
+                  window.location.hostname === "127.0.0.1" || 
+                  window.location.protocol === "file:";
+
+  const endpoint = isLocal 
+    ? "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec" 
+    : "/api/submit";
 
   const fetchOptions = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   };
+
+  if (isLocal) {
+    // Google Apps Script requires text/plain for CORS in local mode
+    fetchOptions.headers = { "Content-Type": "text/plain;charset=utf-8" };
+  } else {
+    fetchOptions.headers = { "Content-Type": "application/json" };
+  }
 
   const response = await fetch(endpoint, fetchOptions);
 
@@ -91,8 +103,8 @@ forms.forEach((form) => {
     }
 
     if (submitButton) submitButton.disabled = true;
-    if (buttonText) buttonText.textContent = "Sending...";
-    setStatus(form, "Submitting your registration...");
+    if (buttonText) buttonText.textContent = "RESERVING...";
+    setStatus(form, "Syncing your rhythm with Coach Siva...");
 
     try {
       saveLocalBackup(payload);
