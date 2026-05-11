@@ -2385,22 +2385,31 @@ footer {
   top: 55%;
   left: 50%;
   z-index: 1;
-  color: rgba(255, 255, 255, 0.03);
-  font-size: 14vw;
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 11vw; /* Reduced from 14vw to prevent cutoff */
   font-weight: 900;
   letter-spacing: 0.05em;
-  line-height: 1;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
-  animation: brandDrift 15s ease-in-out infinite alternate;
+  animation: centeredPulse 12s ease-in-out infinite alternate;
+  text-shadow: 0 0 40px rgba(124, 58, 237, 0.2);
 }
 
-@keyframes brandDrift {
-  0% { transform: translate(-50%, -50%) translateY(-20px); }
-  100% { transform: translate(-50%, -50%) translateY(20px); }
+@keyframes centeredPulse {
+  0% { 
+    transform: translate(-50%, -50%) scale(0.95) translateY(-10px);
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(1.05) translateY(10px);
+    opacity: 0.08;
+  }
 }
 
 .stage-streaks {
