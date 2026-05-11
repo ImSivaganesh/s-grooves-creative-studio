@@ -1595,16 +1595,22 @@ footer {
   text-align: center;
 }
 
-.reveal {
+.reveal > * {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.visible {
+.reveal.visible > * {
   opacity: 1;
   transform: translateY(0);
 }
+
+.reveal.visible > *:nth-child(1) { transition-delay: 0.1s; }
+.reveal.visible > *:nth-child(2) { transition-delay: 0.2s; }
+.reveal.visible > *:nth-child(3) { transition-delay: 0.3s; }
+.reveal.visible > *:nth-child(4) { transition-delay: 0.4s; }
+.reveal.visible > *:nth-child(5) { transition-delay: 0.5s; }
 
 @keyframes fadeUp {
   from {
@@ -1840,6 +1846,31 @@ footer {
   50% {
     transform: translateY(-7px) rotate(7deg) scale(1.08);
   }
+}
+
+/* Glassmorphism Hover Glows */
+.curr-item {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+.curr-item:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15), 0 0 20px rgba(124, 58, 237, 0.05) inset;
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.fee-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+.fee-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 48px rgba(124, 58, 237, 0.18), 0 0 30px rgba(124, 58, 237, 0.05) inset;
+  border-color: rgba(124, 58, 237, 0.5);
+}
+
+/* Magnetic Button Prep */
+.btn, .s-btn, .btn-wa-alt {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 .quick-form-grid {
