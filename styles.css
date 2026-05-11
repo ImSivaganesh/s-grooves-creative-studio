@@ -2192,6 +2192,7 @@ footer {
   .sched-grid,
   .fee-grid,
   .support-grid,
+  .dna-grid, /* Added for mobile containment */
   .quick-form-grid {
     grid-template-columns: 1fr;
   }
@@ -2522,6 +2523,29 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto auto;
   gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .immersive-bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+
+  .imm-main,
+  .imm-visionary {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  .imm-card {
+    padding: 32px 24px !important;
+    border-radius: 30px !important;
+  }
+
+  .imm-title {
+    font-size: 32px !important;
+  }
 }
 
 .imm-card {
@@ -3732,7 +3756,15 @@ body {
   .sched-grid,
   .dna-grid,
   .support-grid {
-    gap: 24px !important;
+    gap: 20px !important;
+  }
+
+  .dna-card {
+    padding: 32px 20px !important;
+  }
+
+  .dna-card h4 {
+    font-size: 1.2rem !important;
   }
 }
 
