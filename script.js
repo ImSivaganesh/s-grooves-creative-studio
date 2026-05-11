@@ -49,18 +49,32 @@ function saveLocalBackup(payload) {
 }
 
 async function submitToGoogleSheet(payload) {
-  const response = await fetch("/api/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
+  // --- SMART SWITCH ---
+  const isLocal = window.location.hostname === "localhost" || 
+                  window.location.hostname === "127.0.0.1" || 
+                  window.location.protocol === "file:";
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error || "Server submission failed");
-    }
+  const endpoint = isLocal 
+    ? "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec" 
+    : "/api/submit";
+
+  const fetchOptions = {
+    method: "POST",
+    body: JSON.stringify(payload)
+  };
+
+  if (isLocal) {
+    fetchOptions.headers = { "Content-Type": "text/plain;charset=utf-8" };
+  } else {
+    fetchOptions.headers = { "Content-Type": "application/json" };
+  }
+
+  const response = await fetch(endpoint, fetchOptions);
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.error || "Server submission failed");
+  }
 }
 
 forms.forEach((form) => {
