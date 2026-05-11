@@ -116,3 +116,24 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+// --- Premium UI Animations ---
+
+// 1. Magnetic Buttons
+const magneticButtons = document.querySelectorAll(".btn, .s-btn, .btn-wa-alt, .fee-cta, .form-submit");
+
+magneticButtons.forEach((btn) => {
+  btn.addEventListener("mousemove", (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    // Move the button slightly towards the cursor for that premium 'pull' effect
+    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.03)`;
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    // Smoothly snap back into original place
+    btn.style.transform = `translate(0px, 0px) scale(1)`;
+  });
+});
