@@ -132,3 +132,29 @@ const observer = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
 
+
+// ===== FAQ Accordion Logic =====
+document.querySelectorAll(".faq-question").forEach((button) => {
+  button.addEventListener("click", () => {
+    const faqItem = button.parentElement;
+    const answer = faqItem.querySelector(".faq-answer");
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+
+    // Close all other FAQ items first
+    document.querySelectorAll(".faq-question").forEach((otherButton) => {
+      if (otherButton !== button) {
+        otherButton.setAttribute("aria-expanded", "false");
+        otherButton.parentElement.querySelector(".faq-answer").style.maxHeight = null;
+      }
+    });
+
+    // Toggle current item
+    button.setAttribute("aria-expanded", !isOpen);
+    
+    if (!isOpen) {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    } else {
+      answer.style.maxHeight = null;
+    }
+  });
+});
