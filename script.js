@@ -55,7 +55,7 @@ async function submitToGoogleSheet(payload) {
                   window.location.protocol === "file:";
 
   const endpoint = isLocal 
-    ? "https://script.google.com/macros/s/AKfycbyYd9fsOoOAsElDLHUUsGDh1NQTVe5zPmllf4pOI94XmHKVPz4SWWkaL73uV7hpctTm/exec" 
+    ? "https://script.google.com/macros/s/AKfycbyA6wpzRui61MdMVhucA78377alCoYjfkeu6irotKQApzCY2vtF32RnLfAwKRuYX7sn/exec" 
     : "/api/submit";
 
   const fetchOptions = {
@@ -111,11 +111,12 @@ forms.forEach((form) => {
 
       await submitToGoogleSheet(payload);
       
-      setStatus(
-        form,
-        `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the S-Grooves, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
-        "success",
-      );
+      const isQuickForm = form.id === "quickForm";
+      const successMsg = isQuickForm 
+        ? `<span class="success-emoji" aria-hidden="true">⚡</span><span class="success-title">Got it, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">I've received your request. Coach Siva will personally reach out to you within 24 hours to sync your rhythm!</span><span class="success-mini" aria-hidden="true">🕺 ✨</span>`
+        : `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the S-Grooves family, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your spot is being reserved. Check your email for a copy of your response. Coach Siva will personally contact you within 24 hours!</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`;
+
+      setStatus(form, successMsg, "success");
       form.reset();
       if (buttonText) buttonText.textContent = "Submitted";
     } catch (error) {
