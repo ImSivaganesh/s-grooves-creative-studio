@@ -3438,11 +3438,20 @@ html, body {
 /* --- 8. Status & Footer Overrides --- */
 .form-success { margin-top: 28px; padding: 28px; border-radius: 20px; }
 .footer-wrap { padding-top: 80px; padding-bottom: 40px; text-align: center; }
+
 @media (max-width: 480px) {
-  .btn { padding: 18px 24px !important; font-size: 14px !important; }
+  .btn, .hero-btns .btn, .form-submit, .fee-cta { width: 100% !important; justify-content: center; padding: 18px 24px !important; font-size: 14px !important; }
+  .tag-orbit { display: none; } /* Prevent horizontal drift on tiny screens */
+  .faq-question { padding: 20px 16px !important; font-size: 15px !important; }
 }
 
-/* --- 9. Story Overrides --- */
+/* --- 9. Story & DNA Centering --- */
+@media (max-width: 768px) {
+  .dna-card, .support-card { text-align: center; justify-content: center; }
+  .dna-icon { margin: 0 auto 12px !important; }
+  .fee-intro { max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; text-align: center; }
+}
+
 .story-text { color: rgba(255, 255, 255, 0.8) !important; font-size: 17px; margin-bottom: 32px; line-height: 1.7; }
 .story-list li { color: #ffffff !important; font-size: 15px; }
 .story-list strong { color: #ffffff !important; font-size: 18px; }
