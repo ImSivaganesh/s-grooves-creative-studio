@@ -800,10 +800,11 @@ a {
 
 .fee-amount {
   margin-bottom: 4px;
-  color: var(--vd);
+  color: #7c3aed !important; /* ELECTRIC VIOLET */
   font-size: 44px;
   font-weight: 800;
   line-height: 1;
+  text-shadow: 0 0 20px rgba(124, 58, 237, 0.3); /* VIOLET GLOW */
 }
 
 .fee-month {
@@ -2544,6 +2545,34 @@ footer {
   transform: translateY(-2px);
 }
 
+/* Quick Reserve Grid Logic */
+.quick-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+  .quick-form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Violet Success State Override */
+.quick-box .form-success {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #fff !important;
+}
+
 /* ===== The 60-Minute Blueprint: Neural Pulse Timeline ===== */
 .weekend-flow {
   padding: 140px 0;
@@ -2995,6 +3024,256 @@ footer {
   text-transform: none;
 }
 
+/* ===== Quick Reserve: Liquid Violet & Polar White Energy ===== */
+/* ===== Quick Reserve: Elite Precision Specs ===== */
+#quick-register .wrap {
+  --vd: #2d0b6b;
+  --vm: #5b21b6;
+  --vb: #7c3aed;
+  --vs: #ede9fe;
+  --vss: #f5f3ff;
+  --gold: #c8961a;
+  --border: rgba(124, 58, 237, 0.15);
+  --shadow: 0 8px 40px rgba(91, 33, 182, 0.12);
+  
+  font-family: "DM Sans", sans-serif;
+  color: rgb(30, 27, 75);
+  box-sizing: border-box;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 40px;
+  
+  /* Elite Reveal Physics */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.2s;
+}
+
+#quick-register.visible .wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quick-box {
+  position: relative;
+  overflow: hidden;
+  padding: 32px 28px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(245, 243, 255, 0.72));
+  box-shadow: 0 24px 70px rgba(91, 33, 182, 0.1); /* Reduced Glow */
+}
+
+.quick-box .form-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #2d0b6b, #7c3aed); /* Deep Violet */
+  color: #fff !important; /* LOCK WHITE */
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  box-shadow: none !important; /* NO NEON */
+}
+
+.quick-box .form-submit .btnText {
+  color: #fff !important; /* LOCK WHITE SPAN */
+}
+
+.quick-box .form-submit:hover,
+.quick-box .form-submit:active {
+  background: #2d0b6b !important; /* Solid Deep Violet */
+  color: #fff !important; /* STAY WHITE */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; /* Standard Shadow, No Neon */
+}
+
+.quick-box .form-box-head {
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+}
+
+.quick-box h3 {
+  color: var(--vd) !important;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+}
+
+.quick-box p {
+  color: #777083 !important;
+  font-size: 12px !important;
+}
+
+.speed-badge {
+  background: var(--vss);
+  color: var(--vb) !important;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 10px;
+}
+
+.quick-box .field-label {
+  color: var(--vd) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+.quick-box .field-input {
+  background: #fff !important;
+  border: 1.5px solid rgba(124, 58, 237, 0.15) !important;
+  color: #1e1b4b !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+}
+
+.quick-box .field-input:focus {
+  border-color: var(--vb) !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1) !important;
+}
+
+.quick-box .form-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px !important;
+  border: none;
+  border-radius: 100px !important;
+  background: linear-gradient(135deg, var(--vd), var(--vb)) !important;
+  color: #fff !important;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 24px rgba(91, 33, 182, 0.3) !important;
+  transition: all 0.25s !important;
+}
+
+.quick-box .form-submit:hover {
+  box-shadow: 0 12px 32px rgba(91, 33, 182, 0.45) !important;
+  transform: translateY(-2px) !important;
+}
+
+.stage-light {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 100%;
+  background: radial-gradient(ellipse at top, rgba(200, 150, 26, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.story-list {
+  list-style: none;
+  margin-top: 40px;
+}
+
+.story-list li {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.story-list li:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(200, 150, 26, 0.3);
+  transform: scale(1.05) translateX(10px);
+  box-shadow: 0 0 30px rgba(200, 150, 26, 0.1);
+}
+
+.story-list li span {
+  font-size: 28px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.story-list strong {
+  display: block;
+  color: var(--gold);
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.story-quote-box {
+  padding: 80px 50px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  position: relative;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-quote-box:hover {
+  transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+  border-color: var(--gold);
+}
+
+.story-quote-box::before {
+  content: "“";
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  font-size: 120px;
+  color: var(--gold);
+  opacity: 0.15;
+  font-family: serif;
+}
+
+.cinematic-quote {
+  font-size: 34px;
+  line-height: 1.3;
+  color: #fff !important;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.cinematic-quote span {
+  background: linear-gradient(to right, var(--gold), #fff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(200, 150, 26, 0.3);
+}
+
+.quote-author {
+  font-family: 'Dancing Script', cursive;
+  font-size: 32px;
+  background: linear-gradient(to right, var(--gold), #fde68a);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 /* ============================================================
    MASTER RESPONSIVENESS PASS
    ============================================================ */
@@ -3007,6 +3286,56 @@ footer {
 @media (max-width: 640px) {
   .wrap { padding: 0 20px; }
   .sec-title { font-size: 32px; line-height: 1.2; }
+}
+
+/* --- 2. Quick Reserve & Pricing Pass --- */
+.quick-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(40px);
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  border-radius: 40px;
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(139, 92, 246, 0.15);
+  transition: all 0.5s ease;
+}
+
+.quick-box:hover {
+  border-color: #a78bfa;
+  transform: translateY(-10px);
+  box-shadow: 0 50px 120px rgba(139, 92, 246, 0.3);
+}
+
+.speed-badge {
+  background: #ffffff;
+  color: #7c3aed !important;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-weight: 900;
+  font-size: 11px;
+}
+
+.form-submit {
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+  color: #ffffff !important;
+  border: none;
+  padding: 22px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.form-submit:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 30px 60px rgba(124, 58, 237, 0.6);
+  background: #ffffff;
+  color: #7c3aed !important;
 }
 
 /* --- 2. Hero Section --- */
