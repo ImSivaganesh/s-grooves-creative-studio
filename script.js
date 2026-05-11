@@ -55,7 +55,7 @@ async function submitToGoogleSheet(payload) {
                   window.location.protocol === "file:";
 
   const endpoint = isLocal 
-    ? "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec" 
+    ? "https://script.google.com/macros/s/AKfycbyYd9fsOoOAsElDLHUUsGDh1NQTVe5zPmllf4pOI94XmHKVPz4SWWkaL73uV7hpctTm/exec" 
     : "/api/submit";
 
   const fetchOptions = {
@@ -113,7 +113,7 @@ forms.forEach((form) => {
       
       setStatus(
         form,
-        `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the groove, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
+        `<span class="success-emoji" aria-hidden="true">🎉</span><span class="success-title">Welcome to the S-Grooves, ${escapeHTML(payload.fullName)}!</span><span class="success-sub">Your registration is received. We will contact you within 24 hours to confirm your personal slot.</span><span class="success-mini" aria-hidden="true">🎧 ✨ 🕺</span>`,
         "success",
       );
       form.reset();
