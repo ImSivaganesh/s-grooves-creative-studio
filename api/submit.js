@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     const userRequests = ipCache.get(ip) || [];
     const recentRequests = userRequests.filter(timestamp => now - timestamp < 60000);
     
-    if (recentRequests.length >= 5) { // Increased to 5 for easier testing
+    if (recentRequests.length >= 3) { // Max 3 submissions per minute per IP
       return res.status(429).json({ success: false, error: "Too many requests. Please wait a minute." });
     }
     
@@ -55,7 +55,7 @@ export default async function handler(req, res) {
     }
   }
 
-  const GOOGLE_URL = process.env.GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec";
+  const GOOGLE_URL = process.env.GOOGLE_SCRIPT_URL; // Stored securely in Vercel Environment Variables
 
   try {
     const response = await fetch(GOOGLE_URL, {
