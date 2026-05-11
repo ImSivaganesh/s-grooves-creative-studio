@@ -2514,585 +2514,56 @@ footer {
   text-decoration: none;
   }
   
-  .bento-main {
-    grid-column: span 1;
-    min-height: 220px;
-  }
-  
-  .bento-main h3 {
-    font-size: 36px;
-  }
-}
 
-@media (max-width: 600px) {
-  .coach-bg-text {
-    font-size: 22vw; /* Larger for mobile impact */
-    top: 50%;
-  }
-  .imm-mantra {
-    font-size: 32px;
-    margin-bottom: 30px;
-  }
-  .sig-name {
-    font-size: 42px;
-  }
-}
-  animation: nebulaDrift 10s ease-in-out infinite alternate;
-}
+/* ============================================================
+   MASTER RESPONSIVENESS PASS
+   ============================================================ */
 
-@keyframes nebulaDrift {
-  0% { transform: translate(-45%, -55%) scale(1); }
-  100% { transform: translate(-55%, -45%) scale(1.2); }
-}
-
-.coach-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.coach-header .sec-title {
-  margin-bottom: 0;
-}
-
-.verified-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border: 1px solid rgba(34, 197, 94, 0.2);
-  border-radius: 100px;
-  background: rgba(34, 197, 94, 0.06);
-  color: #16a34a;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.v-icon {
-  display: grid;
-  width: 16px;
-  height: 16px;
-  place-items: center;
-  border-radius: 50%;
-  background: #22c55e;
-  color: #fff;
-  font-size: 9px;
-}
-
-.coach-skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
-}
-
-.skill-tag {
-  padding: 6px 14px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-
-.tag-hiphop { background: #fdf4ff; color: #9333ea; border: 1px solid #f5d0fe; }
-.tag-choreo { background: #fff7ed; color: #ea580c; border: 1px solid #ffedd5; }
-.tag-art { background: #fef2f2; color: #dc2626; border: 1px solid #fee2e2; }
-.tag-freestyle { background: #eff6ff; color: #2563eb; border: 1px solid #dbeafe; }
-
-.skill-tag:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
-}
-
-.coach-signature {
-  margin-top: 40px;
-}
-
-.coach-signature p {
-  margin-bottom: 4px;
-  color: #94a3b8;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.sig-name {
-  color: #ffffff !important;
-  font-family: 'Dancing Script', cursive;
-  font-size: 56px;
-  font-weight: 700;
-  text-shadow: none !important;
-  line-height: 1.2;
-}
-
-/* ===== Quick Reserve: Speed & Energy Theme ===== */
-.quick-reserve-section {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #fff 0%, var(--vss) 100%);
-  padding: 40px 0;
-}
-
-.speed-lines {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(135deg, transparent 45%, rgba(124, 58, 237, 0.03) 50%, transparent 55%);
-  background-size: 60px 60px;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.quick-box {
-  max-width: 600px;
-  margin: 0 auto;
-  border-color: rgba(124, 58, 237, 0.2);
-  box-shadow: 0 20px 60px rgba(91, 33, 182, 0.08);
-  transform: rotate(-0.5deg);
-}
-
-.energy-icon {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  place-items: center;
-  border-radius: 12px;
-  background: var(--vd);
-  color: var(--gold);
-  font-size: 24px;
-  animation: energyPulse 2s infinite;
-}
-
-@keyframes energyPulse {
-  0% { box-shadow: 0 0 0 0 rgba(200, 150, 26, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(200, 150, 26, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(200, 150, 26, 0); }
-}
-
-.speed-badge {
-  margin-left: auto;
-  padding: 4px 10px;
-  border-radius: 6px;
-  background: var(--vss);
-  color: var(--vb);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.quick-form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
+/* --- 1. General Wrappers --- */
+@media (max-width: 1200px) {
+  .wrap { padding: 0 40px; }
 }
 
 @media (max-width: 640px) {
-  .quick-form-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .quick-box {
-    transform: none;
-  }
-  
-  .speed-badge {
-    display: none;
-  }
+  .wrap { padding: 0 24px; }
 }
 
-/* ===== Weekend Flow Section ===== */
-.weekend-flow {
-  padding: 100px 0;
-  background: #fff;
+/* --- 2. Hero Section --- */
+@media (max-width: 850px) {
+  .hero { flex-direction: column; text-align: center; padding-top: 60px; }
+  .hero-panel { max-width: 100%; padding-bottom: 40px; }
+  .hero-btns { justify-content: center; }
+  .hero-img-col { width: 100%; max-width: 400px; margin: 0 auto; }
 }
 
-.flow-header {
-  margin-bottom: 60px;
-  text-align: center;
-}
-
-.flow-intro {
-  max-width: 500px;
-  margin: 10px auto 0;
-  color: #625b72;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.flow-tag {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  background: var(--vss);
-  color: var(--vb);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.flow-container {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* The vertical line */
-.flow-container::before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 95px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--vb) 0%, #f3f4f6 100%);
-  content: "";
-}
-
-.flow-item {
-  position: relative;
-  display: flex;
-  margin-bottom: 50px;
-}
-
-.flow-item:last-child {
-  margin-bottom: 0;
-}
-
-.flow-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100px;
-  padding-top: 5px;
-}
-
-.flow-time {
-  color: var(--vd);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
-.flow-dot {
-  z-index: 2;
-  width: 12px;
-  height: 12px;
-  margin-top: 15px;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  background: var(--vb);
-  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
-}
-
-.flow-item:first-child .flow-dot {
-  background: var(--gold);
-  box-shadow: 0 0 15px rgba(200, 150, 26, 0.4);
-}
-
-.flow-content {
-  margin-left: 40px;
-  padding: 24px 30px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: #fff;
-  transition: all 0.3s ease;
-}
-
-.flow-content h3 {
-  margin-bottom: 8px;
-  color: var(--vd);
-  font-size: 19px;
-  font-weight: 800;
-}
-
-.flow-content p {
-  color: #625b72;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.flow-item:hover .flow-content {
-  border-color: var(--vb);
-  box-shadow: 0 10px 30px rgba(91, 33, 182, 0.05);
-  transform: translateX(10px);
+/* --- 3. Immersive Coach Section (Mastermind) --- */
+@media (max-width: 1000px) {
+  .immersive-bento { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .imm-main { grid-column: span 2; }
+  .imm-visionary { grid-row: span 1; grid-column: span 1; }
 }
 
 @media (max-width: 640px) {
-  .flow-container::before {
-    left: 15px;
-  }
-  
-  .flow-meta {
-    width: 40px;
-  }
-  
-  .flow-time {
-    font-size: 10px;
-    transform: rotate(-90deg) translateY(-20px);
-    white-space: nowrap;
-  }
-  
-  .flow-content {
-    margin-left: 20px;
-    padding: 20px;
-  }
-  
-  .flow-content h3 {
-    font-size: 17px;
-  }
+  .coach-section { padding: 80px 0; }
+  .coach-bg-text { font-size: 20vw; top: 50%; }
+  .immersive-bento { grid-template-columns: 1fr; }
+  .imm-main, .imm-visionary { grid-column: span 1; }
+  .imm-card { padding: 32px; border-radius: 24px; }
+  .imm-title { font-size: 32px; }
+  .imm-mantra { font-size: 28px; margin-bottom: 30px; }
+  .sig-name { font-size: 42px; }
 }
 
-/* ===== Storytelling Section: Cinematic Stage Theme ===== */
-.storytelling-section {
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #0a0a0c 80%);
-  padding: 120px 0;
-  color: #fff;
-}
-
-/* Film Grain Texture */
-.storytelling-section::before {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.04;
-  content: "";
-  pointer-events: none;
-}
-
-.stage-light {
-  position: absolute;
-  top: -150px;
-  left: 50%;
-  z-index: 2;
-  width: 1200px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
-  content: "";
-  filter: blur(100px);
-  pointer-events: none;
-  transform: translateX(-50%);
-  animation: lightPulse 8s infinite alternate;
-}
-
-@keyframes lightPulse {
-  0% { opacity: 0.7; transform: translateX(-50%) scale(1); }
-  100% { opacity: 1; transform: translateX(-50%) scale(1.1); }
-}
-
-/* Floating Dust Particles */
-.storytelling-section::after {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
-  background-size: 100px 100px;
-  content: "";
-  opacity: 0.3;
-  pointer-events: none;
-  animation: dustDrift 20s linear infinite;
-}
-
-@keyframes dustDrift {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 200px; }
-}
-
-.story-grid {
-  position: relative;
-  z-index: 3;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-  gap: 80px;
-}
-
-.story-text {
-  margin-bottom: 32px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 18px;
-  line-height: 1.8;
-}
-
-.story-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 0;
-  list-style: none;
-}
-
-.story-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  font-size: 16px;
-}
-
-.story-list span {
-  font-size: 24px;
-}
-
-.story-list strong {
-  display: block;
-  color: #fff;
-  font-size: 18px;
-}
-
-.story-quote-box {
-  position: relative;
-  padding: 60px 40px;
-  border-radius: 32px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-}
-
-.cinematic-quote {
-  margin-bottom: 24px;
-  color: #fff;
-  font-family: serif;
-  font-size: 32px;
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.cinematic-quote span {
-  display: block;
-  background: linear-gradient(to right, var(--gold), #fde68a);
-  background-clip: text;
-  color: transparent;
-  font-weight: 800;
-  -webkit-background-clip: text;
-}
-
-.quote-author {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
+/* --- 4. Method Grid & Flow --- */
 @media (max-width: 900px) {
-  .story-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
+  .curr-grid { grid-template-columns: 1fr; }
+  .flow-container::before { left: 15px; }
+  .flow-meta { width: 40px; }
+  .flow-time { font-size: 10px; transform: rotate(-90deg) translateY(-20px); white-space: nowrap; }
+  .flow-content { margin-left: 20px; padding: 24px; }
 }
 
-@media (max-width: 600px) {
-  .storytelling-section {
-    padding: 80px 0;
-  }
-  
-  .cinematic-quote {
-    font-size: 24px;
-  }
-}
-
-/* ===== Style DNA Gallery ===== */
-.style-dna-gallery {
-  margin-top: 80px;
-  padding-top: 60px;
-  border-top: 1px solid var(--border);
-}
-
-.dna-header {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.dna-badge {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 6px 14px;
-  border-radius: 100px;
-  background: var(--vd);
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.dna-header h3 {
-  margin-bottom: 8px;
-  color: var(--vd);
-  font-size: 24px;
-  font-weight: 800;
-}
-
-.dna-header p {
-  max-width: 600px;
-  margin: 0 auto;
-  color: #625b72;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.dna-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.dna-card {
-  position: relative;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  background: #fff;
-  text-align: center;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-}
-
-.dna-icon {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 32px;
-}
-
-.dna-card h4 {
-  margin-bottom: 4px;
-  color: var(--vd);
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.dna-card p {
-  color: #94a3b8;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-/* Unique Glows for each style */
-.dna-card:hover { transform: translateY(-8px) scale(1.03); }
-
-.dna-hiphop:hover { border-color: #9333ea; box-shadow: 0 15px 30px rgba(147, 51, 234, 0.1); }
-.dna-afro:hover { border-color: #eab308; box-shadow: 0 15px 30px rgba(234, 179, 8, 0.1); }
-.dna-dancehall:hover { border-color: #22c55e; box-shadow: 0 15px 30px rgba(34, 197, 94, 0.1); }
-.dna-krump:hover { border-color: #ef4444; box-shadow: 0 15px 30px rgba(239, 68, 68, 0.1); }
-.dna-locking:hover { border-color: #3b82f6; box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1); }
-.dna-breaking:hover { border-color: #f97316; box-shadow: 0 15px 30px rgba(249, 115, 22, 0.1); }
-.dna-house:hover { border-color: #06b6d4; box-shadow: 0 15px 30px rgba(6, 182, 212, 0.1); }
-.dna-popping:hover { border-color: #64748b; box-shadow: 0 15px 30px rgba(100, 116, 139, 0.1); }
-.dna-waacking:hover { border-color: #ec4899; box-shadow: 0 15px 30px rgba(236, 72, 153, 0.1); }
-
+/* --- 5. Style DNA Gallery --- */
 @media (max-width: 850px) {
   .dna-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -3100,4 +2571,23 @@ footer {
 @media (max-width: 500px) {
   .dna-grid { grid-template-columns: 1fr; }
   .dna-card { padding: 20px; }
+}
+
+/* --- 6. Pricing & Forms --- */
+@media (max-width: 768px) {
+  .fee-grid { grid-template-columns: 1fr; gap: 20px; }
+  .fee-featured { transform: none !important; }
+  .quick-form-grid { grid-template-columns: 1fr; }
+  .quick-box { transform: none; }
+  .speed-badge { display: none; }
+}
+
+/* --- 7. Storytelling --- */
+@media (max-width: 900px) {
+  .story-grid { grid-template-columns: 1fr; gap: 60px; }
+}
+
+@media (max-width: 600px) {
+  .storytelling-section { padding: 80px 0; }
+  .cinematic-quote { font-size: 24px; }
 }
