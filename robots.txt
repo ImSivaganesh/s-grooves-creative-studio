@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://s-grooves.vercel.app/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
