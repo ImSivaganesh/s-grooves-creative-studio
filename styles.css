@@ -3338,69 +3338,84 @@ footer {
   color: #7c3aed !important;
 }
 
-/* --- 2. Hero Section --- */
+/* ============================================================
+   MASTER RESPONSIVENESS & MOBILE SPACING OVERHAUL
+   ============================================================ */
+
+/* --- 1. General Wrappers & Global Spacing --- */
+@media (max-width: 1200px) {
+  .wrap { padding: 0 40px; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 80px 0 !important; } /* Universal Breathing Room */
+  .wrap { padding: 0 24px !important; } /* Safe Edge Zone */
+  .sec-title { font-size: 34px !important; line-height: 1.2; margin-bottom: 24px !important; }
+  .sec-eyebrow { margin-bottom: 12px !important; }
+}
+
+/* --- 2. Hero Section Mobile --- */
 @media (max-width: 850px) {
   .hero { flex-direction: column; text-align: center; padding-top: 40px; padding-bottom: 60px; }
   .hero-panel { max-width: 100%; }
-  .hero-title { font-size: 52px; }
-  .hero-btns { flex-direction: column; gap: 12px; }
-  .hero-btns .btn { width: 100%; }
-  .hero-img-col { width: 100%; max-width: 340px; margin: 0 auto; }
+  .hero-title { font-size: 48px; margin-bottom: 24px; }
+  .hero-btns { flex-direction: column; gap: 16px; width: 100%; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+  .hero-img-col { width: 100%; max-width: 320px; margin: 40px auto 0; }
 }
 
-/* --- 3. Immersive Coach Section (Mastermind) --- */
-@media (max-width: 1000px) {
-  .immersive-bento { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .imm-main { grid-column: span 2; }
-}
-
+/* --- 3. Mastermind & Coach Section Mobile --- */
 @media (max-width: 640px) {
-  .coach-section { padding: 60px 0; }
-  .coach-bg-text { font-size: 16vw; top: 52%; }
-  .immersive-bento { grid-template-columns: 1fr; }
-  .imm-card { padding: 24px; border-radius: 20px; }
-  .imm-title { font-size: 28px; }
-  .sig-name { font-size: 44px; }
+  .coach-bg-text { font-size: 16vw; top: 52%; opacity: 0.05; }
+  .immersive-bento { grid-template-columns: 1fr; gap: 24px; }
+  .imm-card { padding: 28px; border-radius: 24px; }
+  .imm-title { font-size: 26px; }
+  .sig-name { font-size: 42px; margin-top: 10px; }
 }
 
-/* --- 4. Blueprint & DNA Gallery --- */
+/* --- 4. 60-Min Blueprint Mobile --- */
 @media (max-width: 900px) {
-  .flow-container::before { left: 40px; }
-  .flow-meta { width: 80px; }
-  .flow-time { 
-    font-size: 11px; 
-    transform: none; 
-    text-align: center;
-    margin-bottom: 8px;
-    color: #ffff00 !important; /* SOLID YELLOW */
-  }
-  .flow-dot { width: 32px; height: 32px; font-size: 13px; }
-  .flow-content { margin-left: 10px; padding: 25px; border-radius: 20px; }
-  
-  .dna-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .flow-container::before { left: 30px; }
+  .flow-meta { width: 60px; }
+  .flow-time { font-size: 10px; margin-bottom: 12px; }
+  .flow-dot { width: 28px; height: 28px; }
+  .flow-item { margin-bottom: 40px; } /* Space between phases */
+  .flow-content { margin-left: 8px; padding: 28px; border-radius: 24px; }
 }
 
+/* --- 5. DNA Gallery Mobile --- */
+@media (max-width: 900px) {
+  .dna-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
 @media (max-width: 500px) {
-  .dna-grid { grid-template-columns: 1fr; }
-  .dna-card { padding: 24px; }
+  .dna-grid { grid-template-columns: 1fr; gap: 24px; }
+  .dna-card { padding: 28px; }
 }
 
-/* --- 5. Pricing & Forms --- */
-@media (max-width: 768px) {
-  .fee-grid { grid-template-columns: 1fr; gap: 20px; }
-  .fee-featured { transform: none !important; }
-  .quick-form-grid { grid-template-columns: 1fr; }
-  .quick-box { transform: none; }
-}
-
-/* --- 6. Storytelling --- */
+/* --- 6. Storytelling (Secret Sauce) Mobile --- */
 @media (max-width: 900px) {
-  .story-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .story-list { align-items: center; text-align: center; }
-  .story-list li { flex-direction: column; gap: 8px; }
-  .story-quote-box { padding: 40px 24px; border-radius: 24px; }
-  .cinematic-quote { font-size: 28px; }
+  .story-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .story-list { margin-top: 32px; gap: 20px; display: flex; flex-direction: column; }
+  .story-list li { padding: 28px; text-align: center; transform: none !important; }
+  .story-quote-box { padding: 48px 28px; border-radius: 28px; margin-top: 20px; }
+  .cinematic-quote { font-size: 26px; line-height: 1.4; }
 }
+
+/* --- 7. Pricing & Quick Reserve Mobile --- */
+@media (max-width: 768px) {
+  .fee-grid { grid-template-columns: 1fr; gap: 24px; }
+  .fee-card { padding: 32px 24px; }
+  .fee-featured { transform: none !important; margin: 12px 0; }
+  
+  .quick-form-grid { grid-template-columns: 1fr; gap: 16px; }
+  .quick-box { padding: 32px 24px; border-radius: 28px; transform: none !important; }
+  .quick-box h3 { font-size: 24px !important; }
+  .form-submit { padding: 18px; font-size: 16px; margin-top: 12px; }
+}
+
+/* --- 8. Status & Footer Overrides --- */
+.form-success { margin-top: 24px; padding: 24px; border-radius: 20px; }
+.footer-wrap { padding-top: 60px; padding-bottom: 40px; }
 
 .story-text { color: rgba(255, 255, 255, 0.8) !important; font-size: 18px; margin-bottom: 30px; }
 .story-list li { color: #ffffff !important; }
