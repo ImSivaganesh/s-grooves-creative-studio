@@ -2816,3 +2816,103 @@ footer {
     font-size: 24px;
   }
 }
+
+/* ===== Style DNA Gallery ===== */
+.style-dna-gallery {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid var(--border);
+}
+
+.dna-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.dna-badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: var(--vd);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dna-header h3 {
+  margin-bottom: 8px;
+  color: var(--vd);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.dna-header p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #625b72;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.dna-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.dna-card {
+  position: relative;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: #fff;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.dna-icon {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 32px;
+}
+
+.dna-card h4 {
+  margin-bottom: 4px;
+  color: var(--vd);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.dna-card p {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Unique Glows for each style */
+.dna-card:hover { transform: translateY(-8px) scale(1.03); }
+
+.dna-hiphop:hover { border-color: #9333ea; box-shadow: 0 15px 30px rgba(147, 51, 234, 0.1); }
+.dna-afro:hover { border-color: #eab308; box-shadow: 0 15px 30px rgba(234, 179, 8, 0.1); }
+.dna-dancehall:hover { border-color: #22c55e; box-shadow: 0 15px 30px rgba(34, 197, 94, 0.1); }
+.dna-krump:hover { border-color: #ef4444; box-shadow: 0 15px 30px rgba(239, 68, 68, 0.1); }
+.dna-locking:hover { border-color: #3b82f6; box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1); }
+.dna-breaking:hover { border-color: #f97316; box-shadow: 0 15px 30px rgba(249, 115, 22, 0.1); }
+.dna-house:hover { border-color: #06b6d4; box-shadow: 0 15px 30px rgba(6, 182, 212, 0.1); }
+.dna-popping:hover { border-color: #64748b; box-shadow: 0 15px 30px rgba(100, 116, 139, 0.1); }
+.dna-waacking:hover { border-color: #ec4899; box-shadow: 0 15px 30px rgba(236, 72, 153, 0.1); }
+
+@media (max-width: 850px) {
+  .dna-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .dna-grid { grid-template-columns: 1fr; }
+  .dna-card { padding: 20px; }
+}
