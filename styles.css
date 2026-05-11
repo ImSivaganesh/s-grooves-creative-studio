@@ -1867,10 +1867,38 @@ footer {
   border-color: rgba(124, 58, 237, 0.5);
 }
 
-/* Magnetic Button Prep */
-.btn, .s-btn, .btn-wa-alt {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
+/* Light Sweep Button Animation */
+.btn, .s-btn, .btn-wa-alt, .fee-cta, .form-submit {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn::after, .s-btn::after, .btn-wa-alt::after, .fee-cta::after, .form-submit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: none;
+  z-index: 1;
+}
+
+.btn:hover::after, .s-btn:hover::after, .btn-wa-alt:hover::after, .fee-cta:hover::after, .form-submit:hover::after {
+  animation: lightSweep 0.7s ease-in-out forwards;
+}
+
+.btn:hover, .s-btn:hover, .btn-wa-alt:hover, .fee-cta:hover, .form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(91, 33, 182, 0.3);
+}
+
+@keyframes lightSweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
 .quick-form-grid {
