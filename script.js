@@ -1,5 +1,3 @@
-
-
 const forms = document.querySelectorAll(".sg-form");
 
 function escapeHTML(value) {
