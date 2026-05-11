@@ -47,28 +47,16 @@ function saveLocalBackup(payload) {
 }
 
 async function submitToGoogleSheet(payload) {
-  // --- SMART SWITCH ---
-  // If local, use the Google URL directly for testing.
-  // If live, use the secure /api/submit route to hide your keys.
-  const isLocal = window.location.hostname === "localhost" || 
-                  window.location.hostname === "127.0.0.1" || 
-                  window.location.protocol === "file:";
-
-  const endpoint = isLocal 
-    ? "https://script.google.com/macros/s/AKfycbyA6wpzRui61MdMVhucA78377alCoYjfkeu6irotKQApzCY2vtF32RnLfAwKRuYX7sn/exec" 
-    : "/api/submit";
+  // --- SECURE: Always use the backend API ---
+  // The Google Apps Script URL is stored safely in Vercel Environment Variables.
+  // It is NEVER exposed to the browser or public code.
+  const endpoint = "/api/submit";
 
   const fetchOptions = {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   };
-
-  if (isLocal) {
-    // Google Apps Script requires text/plain for CORS in local mode
-    fetchOptions.headers = { "Content-Type": "text/plain;charset=utf-8" };
-  } else {
-    fetchOptions.headers = { "Content-Type": "application/json" };
-  }
 
   const response = await fetch(endpoint, fetchOptions);
 
