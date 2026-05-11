@@ -39,8 +39,25 @@ export default async function handler(req, res) {
 
   const payload = req.body;
 
+  // --- 3. INPUT VALIDATION & SANITIZATION ---
+  // Prevent "Data Bloating" (Large messages that crash sheets)
+  const MAX_NAME = 100;
+  const MAX_EMAIL = 100;
+  const MAX_MESSAGE = 2000;
+
+  if (payload.fullName && payload.fullName.length > MAX_NAME) payload.fullName = payload.fullName.substring(0, MAX_NAME);
+  if (payload.email && payload.email.length > MAX_EMAIL) payload.email = payload.email.substring(0, MAX_EMAIL);
+  if (payload.message && payload.message.length > MAX_MESSAGE) payload.message = payload.message.substring(0, MAX_MESSAGE);
+
+  // Validate Email Format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (payload.email && !emailRegex.test(payload.email)) {
+    return res.status(400).json({ success: false, error: "Invalid email format" });
+  }
+
   // --- HONEYPOT CHECK ---
   if (payload.website_url && payload.website_url.trim() !== "") {
+    console.warn("Bot attempt blocked in backend.");
     return res.status(200).json({ success: true, message: "Spam filtered." });
   }
   delete payload.website_url;

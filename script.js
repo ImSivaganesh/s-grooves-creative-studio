@@ -47,25 +47,16 @@ function saveLocalBackup(payload) {
 }
 
 async function submitToGoogleSheet(payload) {
-  // --- SMART SWITCH ---
-  const isLocal = window.location.hostname === "localhost" || 
-                  window.location.hostname === "127.0.0.1" || 
-                  window.location.protocol === "file:";
-
-  const endpoint = isLocal 
-    ? "https://script.google.com/macros/s/AKfycbya5D1aErA7NC2zNopII2ODwx9x8ACql7Z4IFiXQch_bAnGoG-hHansKUenAke1JgRq/exec" 
-    : "/api/submit";
+  // --- SECURE ROUTE ---
+  // We NEVER expose the Google Script URL in the browser. 
+  // All traffic goes through our Vercel API "Bouncer".
+  const endpoint = "/api/submit";
 
   const fetchOptions = {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
   };
-
-  if (isLocal) {
-    fetchOptions.headers = { "Content-Type": "text/plain;charset=utf-8" };
-  } else {
-    fetchOptions.headers = { "Content-Type": "application/json" };
-  }
 
   const response = await fetch(endpoint, fetchOptions);
 
@@ -88,6 +79,16 @@ forms.forEach((form) => {
     const submitButton = form.querySelector("button[type='submit']");
     const buttonText = form.querySelector(".btnText");
     const originalText = buttonText ? buttonText.textContent : "Submit";
+
+    // --- SECURITY CHECK: HONEYPOT ---
+    if (payload.website_url) {
+      console.warn("Spam attempt blocked by honeypot.");
+      // Pretend it worked to fool the bot
+      setStatus(form, "Thank you! Your registration is received.");
+      form.reset();
+      if (buttonText) buttonText.textContent = "Submitted";
+      return;
+    }
 
     if (submitButton) submitButton.disabled = true;
     if (buttonText) buttonText.textContent = "Sending...";

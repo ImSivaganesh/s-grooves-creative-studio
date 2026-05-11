@@ -2545,6 +2545,44 @@ footer {
   transform: translateY(-2px);
 }
 
+/* --- Main Form Specific Button Upgrade --- */
+#enquiryForm .form-submit {
+  --vd: #2d0b6b;
+  --vm: #5b21b6;
+  --vb: #7c3aed;
+  --vs: #ede9fe;
+  --vss: #f5f3ff;
+  --gold: #c8961a;
+  --border: rgba(124, 58, 237, 0.15);
+  --shadow: 0 8px 40px rgba(91, 33, 182, 0.12);
+  
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  margin-top: 6px;
+  font: inherit;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%) !important;
+  color: #ffffff !important;
+  border: none;
+  padding: 22px !important;
+  border-radius: 20px;
+  font-size: 18px !important;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.4) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer;
+  display: block;
+}
+
+#enquiryForm .form-submit:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(124, 58, 237, 0.6) !important;
+}
+
 /* Quick Reserve Grid Logic */
 .quick-form-grid {
   display: grid;
@@ -3278,145 +3316,99 @@ footer {
    MASTER RESPONSIVENESS PASS
    ============================================================ */
 
-/* --- 1. General Wrappers --- */
-@media (max-width: 1200px) {
-  .wrap { padding: 0 40px; }
-}
-
-@media (max-width: 640px) {
-  .wrap { padding: 0 20px; }
-  .sec-title { font-size: 32px; line-height: 1.2; }
-}
-
-/* --- 2. Quick Reserve & Pricing Pass --- */
-.quick-box {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(40px);
-  border: 2px solid rgba(139, 92, 246, 0.3);
-  border-radius: 40px;
-  padding: 50px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 40px 100px rgba(139, 92, 246, 0.15);
-  transition: all 0.5s ease;
-}
-
-.quick-box:hover {
-  border-color: #a78bfa;
-  transform: translateY(-10px);
-  box-shadow: 0 50px 120px rgba(139, 92, 246, 0.3);
-}
-
-.speed-badge {
-  background: #ffffff;
-  color: #7c3aed !important;
-  padding: 6px 14px;
-  border-radius: 100px;
-  font-weight: 900;
-  font-size: 11px;
-}
-
-.form-submit {
-  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
-  color: #ffffff !important;
-  border: none;
-  padding: 22px;
-  border-radius: 20px;
-  font-size: 18px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.4);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-}
-
-.form-submit:hover {
-  transform: scale(1.02) translateY(-5px);
-  box-shadow: 0 30px 60px rgba(124, 58, 237, 0.6);
-  background: #ffffff;
-  color: #7c3aed !important;
-}
-
 /* ============================================================
-   MASTER RESPONSIVENESS & MOBILE SPACING OVERHAUL
+   MASTER RESPONSIVENESS & MOBILE SPACING OVERHAUL (FINAL)
    ============================================================ */
 
-/* --- 1. General Wrappers & Global Spacing --- */
+/* --- 1. Global Stability & Horizontal Lock --- */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- 2. Universal Breathing & Typography Scaling --- */
 @media (max-width: 1200px) {
   .wrap { padding: 0 40px; }
 }
 
 @media (max-width: 768px) {
-  section { padding: 80px 0 !important; } /* Universal Breathing Room */
+  section, .alt-bg > .wrap { padding: 100px 0 !important; } /* Elite Spacing */
   .wrap { padding: 0 24px !important; } /* Safe Edge Zone */
-  .sec-title { font-size: 34px !important; line-height: 1.2; margin-bottom: 24px !important; }
-  .sec-eyebrow { margin-bottom: 12px !important; }
+  .sec-title { font-size: 32px !important; line-height: 1.2; margin-bottom: 28px !important; }
+  .sec-eyebrow { margin-bottom: 14px !important; font-size: 11px !important; }
+  .curr-intro, .fee-intro, .flow-intro { font-size: 15px !important; margin-bottom: 44px !important; line-height: 1.6 !important; margin-top: 0 !important; }
 }
 
-/* --- 2. Hero Section Mobile --- */
+/* --- 3. Hero Section Mobile (Fluid & Centered) --- */
 @media (max-width: 850px) {
-  .hero { flex-direction: column; text-align: center; padding-top: 40px; padding-bottom: 60px; }
-  .hero-panel { max-width: 100%; }
-  .hero-title { font-size: 48px; margin-bottom: 24px; }
-  .hero-btns { flex-direction: column; gap: 16px; width: 100%; }
+  .hero { flex-direction: column; text-align: center; padding-top: 40px; padding-bottom: 60px; min-height: auto; }
+  .hero-panel { max-width: 100%; padding: 60px 24px; }
+  .hero-title { font-size: 44px !important; margin-bottom: 24px; }
+  .hero-btns { flex-direction: column; gap: 14px; width: 100%; }
   .hero-btns .btn { width: 100%; justify-content: center; }
-  .hero-img-col { width: 100%; max-width: 320px; margin: 40px auto 0; }
+  .hero-img-col { width: 100%; max-width: 280px; margin: 40px auto 0; }
+  .float-card { display: none; } /* Clean up mobile hero */
 }
 
-/* --- 3. Mastermind & Coach Section Mobile --- */
+/* --- 4. Bento & Coach Identity Mobile --- */
+@media (max-width: 1000px) {
+  .brand-bento-grid { grid-template-columns: 1fr 1fr; }
+  .brand-main, .brand-method { grid-column: span 2; }
+}
+
 @media (max-width: 640px) {
-  .coach-bg-text { font-size: 16vw; top: 52%; opacity: 0.05; }
-  .immersive-bento { grid-template-columns: 1fr; gap: 24px; }
-  .imm-card { padding: 28px; border-radius: 24px; }
-  .imm-title { font-size: 26px; }
-  .sig-name { font-size: 42px; margin-top: 10px; }
+  .coach-bg-text { font-size: 14vw; top: 50%; opacity: 0.04; }
+  .brand-bento-grid { grid-template-columns: 1fr; gap: 24px; }
+  .brand-main, .brand-method { grid-column: span 1; }
+  .brand-bento-item { padding: 32px 24px; border-radius: 28px; }
+  .sig-name { font-size: 38px; }
 }
 
-/* --- 4. 60-Min Blueprint Mobile --- */
+/* --- 5. Grid Systems (Blueprint, DNA, Support) --- */
 @media (max-width: 900px) {
-  .flow-container::before { left: 30px; }
-  .flow-meta { width: 60px; }
-  .flow-time { font-size: 10px; margin-bottom: 12px; }
-  .flow-dot { width: 28px; height: 28px; }
-  .flow-item { margin-bottom: 40px; } /* Space between phases */
-  .flow-content { margin-left: 8px; padding: 28px; border-radius: 24px; }
-}
-
-/* --- 5. DNA Gallery Mobile --- */
-@media (max-width: 900px) {
-  .dna-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-}
-@media (max-width: 500px) {
-  .dna-grid { grid-template-columns: 1fr; gap: 24px; }
-  .dna-card { padding: 28px; }
+  .flow-container::before { left: 24px; }
+  .flow-meta { width: 44px; }
+  .flow-time { font-size: 9px; margin-bottom: 8px; }
+  .flow-item { margin-bottom: 40px; }
+  .flow-content { margin-left: 4px; padding: 24px; border-radius: 24px; }
+  
+  .curr-grid, .sched-grid, .dna-grid, .support-grid { gap: 24px !important; }
 }
 
 /* --- 6. Storytelling (Secret Sauce) Mobile --- */
 @media (max-width: 900px) {
   .story-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
   .story-list { margin-top: 32px; gap: 20px; display: flex; flex-direction: column; }
-  .story-list li { padding: 28px; text-align: center; transform: none !important; }
-  .story-quote-box { padding: 48px 28px; border-radius: 28px; margin-top: 20px; }
-  .cinematic-quote { font-size: 26px; line-height: 1.4; }
+  .story-list li { padding: 28px; text-align: center; flex-direction: column; transform: none !important; }
+  .story-list li span { margin-bottom: 12px; } /* Emoji Spacing */
+  .story-quote-box { padding: 48px 24px; border-radius: 32px; margin-top: 20px; }
+  .cinematic-quote { font-size: 24px; line-height: 1.4; }
 }
 
 /* --- 7. Pricing & Quick Reserve Mobile --- */
 @media (max-width: 768px) {
-  .fee-grid { grid-template-columns: 1fr; gap: 24px; }
+  .fee-grid { grid-template-columns: 1fr; gap: 28px; }
   .fee-card { padding: 32px 24px; }
-  .fee-featured { transform: none !important; margin: 12px 0; }
+  .fee-featured { transform: none !important; margin: 16px 0; }
+  .fee-amount { font-size: 38px !important; }
   
   .quick-form-grid { grid-template-columns: 1fr; gap: 16px; }
-  .quick-box { padding: 32px 24px; border-radius: 28px; transform: none !important; }
-  .quick-box h3 { font-size: 24px !important; }
-  .form-submit { padding: 18px; font-size: 16px; margin-top: 12px; }
+  .quick-box { padding: 32px 24px; border-radius: 32px; transform: none !important; }
+  .quick-box h3 { font-size: 26px !important; }
 }
 
 /* --- 8. Status & Footer Overrides --- */
-.form-success { margin-top: 24px; padding: 24px; border-radius: 20px; }
-.footer-wrap { padding-top: 60px; padding-bottom: 40px; }
+.form-success { margin-top: 28px; padding: 28px; border-radius: 20px; }
+.footer-wrap { padding-top: 80px; padding-bottom: 40px; text-align: center; }
+@media (max-width: 480px) {
+  .btn { padding: 18px 24px !important; font-size: 14px !important; }
+}
 
-.story-text { color: rgba(255, 255, 255, 0.8) !important; font-size: 18px; margin-bottom: 30px; }
-.story-list li { color: #ffffff !important; }
+/* --- 9. Story Overrides --- */
+.story-text { color: rgba(255, 255, 255, 0.8) !important; font-size: 17px; margin-bottom: 32px; line-height: 1.7; }
+.story-list li { color: #ffffff !important; font-size: 15px; }
 .story-list strong { color: #ffffff !important; font-size: 18px; }
